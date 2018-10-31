@@ -29,16 +29,16 @@ public class BracketValidatorShould {
 
     @ParameterizedTest
     @CsvSource({
-            "[[, INVALID",
-            "]], INVALID",
-            "[[[, INVALID",
-            "{, INVALID",
-            "([)], INVALID"
+            "[[",
+            "]]",
+            "[[[",
+            "{",
+            "([)]"
     })
-    void return_whether_input_is_invalid(String input, Bracket expectedValidationResponse) {
+    void return_whether_input_is_invalid(String input) {
         Bracket validationResponse = bracketValidator.validate(input == null ? "" : input);
 
 
-        assertThat(validationResponse, is(expectedValidationResponse));
+        assertThat(validationResponse, is(Bracket.INVALID));
     }
 }
