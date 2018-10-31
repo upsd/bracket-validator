@@ -21,7 +21,7 @@ public class BracketValidatorShould {
             "{}"
     })
     void return_whether_input_is_valid(String input) {
-        Bracket validationResponse = bracketValidator.validate(input == null ? "" : input);
+        Bracket validationResponse = bracketValidator.validate(input);
 
 
         assertThat(validationResponse, is(Bracket.VALID));
@@ -36,7 +36,7 @@ public class BracketValidatorShould {
             "([)]"
     })
     void return_whether_input_is_invalid(String input) {
-        Bracket validationResponse = bracketValidator.validate(input == null ? "" : input);
+        Bracket validationResponse = bracketValidator.validate(input);
 
 
         assertThat(validationResponse, is(Bracket.INVALID));
