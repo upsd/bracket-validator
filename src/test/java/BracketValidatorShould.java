@@ -16,13 +16,22 @@ public class BracketValidatorShould {
 
     @ParameterizedTest
     @CsvSource({
-            ", VALID",
-            "[], VALID",
+            "\"\"",
+            "[]",
+            "{}"
+    })
+    void return_whether_input_is_valid(String input) {
+        Bracket validationResponse = bracketValidator.validate(input == null ? "" : input);
+
+
+        assertThat(validationResponse, is(Bracket.VALID));
+    }
+
+    @ParameterizedTest
+    @CsvSource({
             "[[, INVALID",
             "]], INVALID",
             "[[[, INVALID",
-            "[rich], VALID",
-            "{}, VALID",
             "{, INVALID",
             "([)], INVALID"
     })
